@@ -4,7 +4,10 @@ import { apiGet } from '../misc/config';
 import { Loader } from '../misc/Loader';
 import { FETCH_SUCCESS, FETCH_FAILED } from '../reducer/showType';
 import { initialState, reducer } from '../reducer/showAction';
-
+import ShowMainData from "../components/Show/ShowMainData";
+import Details from "../components/Show/Details";
+import Seasons from "../components/Show/Seasons";
+import Cast from "../components/Show/Cast";
 
 const ShowDetail = () => {
 
@@ -42,8 +45,34 @@ const ShowDetail = () => {
 
     return (
         <div>
-            {console.log(show)}
-            show detail
+            <ShowMainData
+                image={show.image}
+                name={show.name}
+                rating={show.rating}
+                summary={show.summary}
+                tags={show.genres}
+            />
+
+            <div>
+                <h2>Details</h2>
+                <Details
+                    status={show.status}
+                    network={show.network}
+                    premeired={show.premeired}
+                />
+            </div>
+            <div>
+                <h2>Seasons</h2>
+                <Seasons
+                    seasons={show._embedded.seasons}
+                />
+            </div>
+            <div>
+                <h2>Casts</h2>
+                <Cast cast={show._embedded.cast} />
+            </div>
+
+
         </div>
     )
 }
