@@ -10,7 +10,6 @@ const Home = () => {
     const [result, setResult] = useState(null);
     const [searchOption, setSearchOption] = useState('shows');
 
-
     const isShowsSeach = searchOption === 'shows';
 
     const onInputChange = (e) => {
@@ -39,10 +38,12 @@ const Home = () => {
 
     // render results
     const renderResult = () => {
+
         if (result && result.length === 0) {
             return <div>No results</div>
         }
         if (result && result.length > 0) {
+
             return result[0].show ?
                 <ShowGrid data={result} /> :
                 <ActorGrid data={result} />;
