@@ -1,4 +1,4 @@
-import { SeasonsWrapper, SeasonList } from "./Seasons.styled";
+import { SeasonsWrapper, SeasonList } from "./style/Seasons.styled";
 
 const Seasons = ({ seasons }) => {
     return (

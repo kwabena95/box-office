@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SearchCard } from "../Style";
+import { SearchCard } from "../../Style";
 
 
 

@@ -1,4 +1,4 @@
-import { CastList } from './Cast.styled';
+import { CastList } from './style/Cast.styled';
 import IMG_PLACEHOLDER from '../../image/not-found.png';
 
 const Cast = ({ cast }) => {

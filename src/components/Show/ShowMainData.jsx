@@ -1,6 +1,6 @@
 import IMG_PLACEHOLDER from '../../image/not-found.png';
 import { Star } from '../Style';
-import { MainDataWrapper, HeadLine, TagList } from './ShowMainData.styled';
+import { MainDataWrapper, HeadLine, TagList } from './style/ShowMainData.styled';
 
 
 
