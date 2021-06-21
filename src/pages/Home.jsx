@@ -5,11 +5,11 @@ import ShowGrid from '../components/Show/ShowGrid';
 import ActorGrid from '../components/Actor/ActorGrid';
 
 
-
 const Home = () => {
     const [searchInput, setSearchInput] = useState('');
     const [result, setResult] = useState(null);
     const [searchOption, setSearchOption] = useState('shows');
+
 
     const isShowsSeach = searchOption === 'shows';
 
@@ -20,7 +20,10 @@ const Home = () => {
     // fetch api
     const onSearch = () => {
         apiGet(`/search/${searchOption}?q=${searchInput}`)
-            .then(data => setResult(data));
+            .then(data => {
+                setResult(data);
+            });
+
     }
 
     const onRadioChange = (e) => {
@@ -29,7 +32,9 @@ const Home = () => {
 
     // grab search result by pressing enter button
     const onKeyDown = (e) => {
-        if (e.keyCode === 13) onSearch();
+        if (e.keyCode === 13) {
+            onSearch();
+        }
     }
 
     // render results
@@ -45,7 +50,6 @@ const Home = () => {
 
         return null;
     }
-
 
 
     return (

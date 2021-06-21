@@ -1,14 +1,16 @@
-import { useState, useEffect } from "react";
+import { useReducer, useEffect } from "react";
 import { useParams } from "react-router";
 import { apiGet } from '../misc/config';
+import { Loader } from '../misc/Loader';
+import { FETCH_SUCCESS, FETCH_FAILED } from '../reducer/showType';
+import { initialState, reducer } from '../reducer/showAction';
+
 
 const ShowDetail = () => {
 
     const { id } = useParams();
 
-    const [show, setShow] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [{ show, isLoading, error }, dispatch] = useReducer(reducer, initialState)
 
     useEffect(() => {
 
@@ -17,14 +19,12 @@ const ShowDetail = () => {
         apiGet(`/shows/${id}?embed[]=seasons&embed[]=cast`)
             .then(data => {
                 if (isMounted) {
-                    setShow(data);
-                    setIsLoading(false);
+                    dispatch({ type: FETCH_SUCCESS, show: data })
                 }
             })
             .catch(err => {
                 if (isMounted) {
-                    setError(err.message);
-                    setIsLoading(false);
+                    dispatch({ type: FETCH_FAILED, error: err.message })
                 }
             });
 
@@ -34,7 +34,7 @@ const ShowDetail = () => {
     }, [id]);
 
     if (isLoading) {
-        return <div>loading...</div>
+        return Loader();
     }
     if (error) {
         return <div>{error}</div>
