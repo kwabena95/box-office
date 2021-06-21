@@ -1,9 +1,10 @@
 import ActorCard from './ActorCard';
 import IMAGE_NOT_FOUND from '../../image/not-found.png';
+import { FlexGrid } from '../Style';
 
 const ActorGrid = ({ data }) => {
     return (
-        <div>
+        <FlexGrid>
             {
                 data.map(({ person }) =>
                     <ActorCard
@@ -19,7 +20,7 @@ const ActorGrid = ({ data }) => {
                 )
 
             }
-        </div>
+        </FlexGrid>
     )
 }
 
