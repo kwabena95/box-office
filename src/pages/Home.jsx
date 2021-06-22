@@ -54,6 +54,7 @@ const Home = () => {
     }
 
 
+
     return (
         <MainPageLayout>
             <input type="text" onChange={onInputChange} onKeyDown={onKeyDown} value={searchInput} placeholder='Search...' />

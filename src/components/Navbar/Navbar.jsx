@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-
+import { useLocation } from 'react-router';
+import { NavList, LinkStyled } from './Nav.styled';
 
 
 const Links = [
@@ -14,15 +14,17 @@ const Links = [
 ]
 
 const Navbar = () => {
+    const location = useLocation();
+
     return (
         <div>
-            <ul>
+            <NavList>
                 {Links.map((link, index) => (
                     <li key={index}>
-                        <Link to={link.to}>{link.text}</Link>
+                        <LinkStyled to={link.to} className={link.to === location.pathname ? 'active' : ''}>{link.text}</LinkStyled>
                     </li>
                 ))}
-            </ul>
+            </NavList>
         </div>
     )
 }
