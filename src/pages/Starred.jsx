@@ -37,7 +37,15 @@ const Starred = () => {
         <MainPageLayout>
             {isLoading && Loader()}
             {error && <div>Error occured: {error}</div>}
-            {!isLoading && !shows && <div style={{ textAlign: 'center', marginTop: '10rem', fontWeight: 'bold', fontSize: '2rem' }}>No shows has been added</div>}
+            {!isLoading && !shows &&
+                <div style={{
+                    textAlign: 'center',
+                    marginTop: '10rem',
+                    fontWeight: 'bold',
+                    fontSize: '2rem'
+                }}>
+                    No shows has been added
+                </div>}
             {!isLoading && !error && <ShowGrid data={shows} />}
         </MainPageLayout>
     )
